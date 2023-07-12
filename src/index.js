@@ -11,7 +11,7 @@ const serverStart = () => {
         let service = new TweetService();
 
         service.create({
-            content: "This is my #first tweet",
+            content: "This is my #Second tweet",
         })
     });
 }
