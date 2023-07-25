@@ -1,5 +1,5 @@
-class CrudRepository{
-    constructor(model){
+class CrudRepository {
+    constructor(model) {
         this.model = model;
     }
     async createOne(data) {
@@ -11,20 +11,20 @@ class CrudRepository{
         }
     }
 
-    async delete(id){
-       try {
-        const result = await this.model.findByIdAndDelete(id);
-        return result;
-       } catch (error) {
+    async delete(id) {
+        try {
+            const result = await this.model.findByIdAndDelete(id);
+            return result;
+        } catch (error) {
             console.log('Error in deleting data from database in CRUD repo', error);
             throw error;
-       }
+        }
     }
 
-    async update(id,data){
+    async update(id, data) {
         try {
-            const result = await this.model.findByIdAndUpdate(id,data,{new:true});
-            
+            const result = await this.model.findByIdAndUpdate(id, data, { new: true });
+
             return result;
         } catch (error) {
             console.log("Error updating the record", error);
@@ -32,18 +32,18 @@ class CrudRepository{
         }
     }
 
-    async get(id){
+    async get(id) {
         try {
             const result = await this.model.findById(id);
 
-            return result;   
+            return result;
         } catch (error) {
             console.log(`No Record found with id ${id}`, error);
             throw error;
         }
     }
 
-    async getAll(){
+    async getAll() {
         try {
             const result = await this.model.find({});
 

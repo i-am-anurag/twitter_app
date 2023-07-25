@@ -3,18 +3,18 @@ import mongoose from "mongoose";
 const likeSchema = new mongoose.Schema({
     onModel: {
         type: String,
-        enum: ['Comment', "Tweet"],
-        required: true
+        required: true,
+        enum: ['Tweet', 'Comment']
     },
     likeable: {
-        tyep: mongoose.Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         required: true,
-        refpath: 'onModel',
+        refPath: 'onModel'
     },
     user: {
         type: mongoose.Schema.Types.ObjectId,
-        required: true,
         ref: 'User',
+        required: true
     }
 }, { timestamps: true });
 
