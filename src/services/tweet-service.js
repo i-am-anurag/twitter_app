@@ -1,3 +1,4 @@
+import Tweet from '../models/tweet.js';
 import { TweetRepository, HashtagRepository } from '../repository/index.js'
 class TweetService {
     constructor() {
@@ -5,8 +6,9 @@ class TweetService {
         this.hashtagRepository = new HashtagRepository();
     }
 
-    async create(data) {
+    async create(userId,data) {
         const content = data.content;
+        data.createdBy = userId;
         const tags = content.match(/#[a-zA-Z0-9_]+/g).map((tag) => tag.substring(1).toLowerCase(tag)); // this regex extracts hashtags
         const tweet = await this.tweetRepository.create(data);
         let alreadyPresentTags = await this.hashtagRepository.findByName(tags);
@@ -27,6 +29,24 @@ class TweetService {
         const tweet = await this.tweetRepository.getWithComments(id);
 
         return tweet;
+    }
+
+    async getUserComment(userId){
+        try {
+            const tweets = await Tweet.find({createdBy: userId})
+            .populate({
+                path: 'comments',
+                model: 'Comment',
+                match: { isDeleted: false } // Exclude soft-deleted comments
+            }).exec();
+            if(tweets.length==0){
+                throw new Error("No Tweets Found");
+            }
+
+            return tweets;
+        } catch (error) {
+            throw new Error(error);
+        }
     }
 }
 export default TweetService;

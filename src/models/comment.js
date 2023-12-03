@@ -25,7 +25,11 @@ const commentSchema = new mongoose.Schema({
             type: mongoose.Schema.Types.ObjectId,
             ref: 'Comment',
         },
-    ]
+    ],
+    isDeleted: {
+        type: Boolean,
+        default: false,
+    }
     // parentId: {
     //     type: mongoose.Schema.Types.ObjectId,
     //     refPath: "onModel",

@@ -1,0 +1,350 @@
+{
+	"info": {
+		"_postman_id": "c9bee247-14bb-4da5-a24c-fa9021c1dd50",
+		"name": "Twitter_app",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24674035"
+	},
+	"item": [
+		{
+			"name": "add_tweet",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{AUTH_TOKEN}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{JWT_TOKEN}}",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"content\":\"what do you think about #modi\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5001/api/v1/tweet",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"v1",
+						"tweet"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "toggle_like",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "userId",
+							"value": "64bf640424bcc096cf093dad",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:5001/api/v1/likes/toggle?onModel=64bf71507d4ae43a9b46f5ce&modelType=Tweet",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"v1",
+						"likes",
+						"toggle"
+					],
+					"query": [
+						{
+							"key": "onModel",
+							"value": "64bf71507d4ae43a9b46f5ce"
+						},
+						{
+							"key": "modelType",
+							"value": "Tweet"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add_comment",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjY1NmNjNWNiYmZmYTlhYmMzNTM0ZDIwMSIsIm5hbWUiOiJhdHVsIiwiZW1haWwiOiJhdHVsMTIzQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiJDJiJDA5JFR2TXlGUFUxRXo4MnZWVHNBUGpmSXVUaXlQbDMwSEVaWVhXWTkvZlY4am0uNWpqTXdJNUVPIiwiX192IjowfSwiaWF0IjoxNzAxNjMzODA3LCJleHAiOjE3MDE3MjAyMDd9.ZZGZ_flLgWJXON2YnljvFd61GcE-uDNimNh1TT1x8AU",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "userId",
+							"value": "64bf640424bcc096cf093dad",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "content",
+							"value": "Good Person",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:5001/api/v1/comment/?onModel=656cde6f2a7768f6d7af10b6&modelType=Tweet",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"v1",
+						"comment",
+						""
+					],
+					"query": [
+						{
+							"key": "onModel",
+							"value": "656cde6f2a7768f6d7af10b6"
+						},
+						{
+							"key": "modelType",
+							"value": "Tweet"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get_tweet",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5001/api/v1/tweet/656cde6f2a7768f6d7af10b6",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"v1",
+						"tweet",
+						"656cde6f2a7768f6d7af10b6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Signup",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "email",
+							"value": "rahul123@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123456",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "rahul",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:5001/api/v1/signup",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"v1",
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SignIn",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "email",
+							"value": "atul123@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123456",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:5001/api/v1/signin",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"v1",
+						"signin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjY1NmNjNWVlYmZmYTlhYmMzNTM0ZDIwMyIsIm5hbWUiOiJ2YXRzYWwiLCJlbWFpbCI6InZhdHNhbDEyM0BnbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYiQwOSRUdk15RlBVMUV6ODJ2VlRzQVBqZkl1VGl5UGwzMEhFWllYV1k5L2ZWOGptLjVqak13STVFTyIsIl9fdiI6MH0sImlhdCI6MTcwMTYzMjE1MCwiZXhwIjoxNzAxNzE4NTUwfQ.h3mlF4v7AM9vLPkUR2zEr4vAoZDs9P5jvSZ3um_OMgY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:5001/api/v1/comment/656cdec42a7768f6d7af10bd",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"v1",
+						"comment",
+						"656cdec42a7768f6d7af10bd"
+					],
+					"query": [
+						{
+							"key": "onModel",
+							"value": "656cc562bffa9abc3534d1fa",
+							"disabled": true
+						},
+						{
+							"key": "modelType",
+							"value": "Comment",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get-users-tweet",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjY1NmNjNWNiYmZmYTlhYmMzNTM0ZDIwMSIsIm5hbWUiOiJhdHVsIiwiZW1haWwiOiJhdHVsMTIzQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiJDJiJDA5JFR2TXlGUFUxRXo4MnZWVHNBUGpmSXVUaXlQbDMwSEVaWVhXWTkvZlY4am0uNWpqTXdJNUVPIiwiX192IjowfSwiaWF0IjoxNzAxNjMzODA3LCJleHAiOjE3MDE3MjAyMDd9.ZZGZ_flLgWJXON2YnljvFd61GcE-uDNimNh1TT1x8AU",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5001/api/v1/tweet/?userId=656cc4a4bffa9abc3534d1f5",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"v1",
+						"tweet",
+						""
+					],
+					"query": [
+						{
+							"key": "userId",
+							"value": "656cc4a4bffa9abc3534d1f5"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "JWT_TOKEN",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjY0YzM3ZGI3NDRhZTAxNTJhNTE1ZTA4YiIsIm5hbWUiOiJtYXl1ciIsImVtYWlsIjoibWF5dXIxMjNAZ21haWwuY29tIiwicGFzc3dvcmQiOiIkMmIkMDkkLmY5M29vUVNaOFNNQ0REbWpYVU9KZVpHelhvelRqU2VhdmxTb1VnZVp2cE5kQ2NGU09GdVciLCJfX3YiOjB9LCJpYXQiOjE2OTA1MzMzMjAsImV4cCI6MTY5MDYxOTcyMH0.v0zOVuZ2XToAjWvocXaEUKP_kp_iv496RllU-iuo1hE"
+		},
+		{
+			"key": "AUTH_TOKEN",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjY1NmNjNGE0YmZmYTlhYmMzNTM0ZDFmNSIsIm5hbWUiOiJhbnVyYWciLCJlbWFpbCI6ImFudXJhZzEyM0BnbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYiQwOSRUdk15RlBVMUV6ODJ2VlRzQVBqZkl1VGl5UGwzMEhFWllYV1k5L2ZWOGptLjVqak13STVFTyIsIl9fdiI6MH0sImlhdCI6MTcwMTYyNzA2NSwiZXhwIjoxNzAxNzEzNDY1fQ.WnljIMLwqeRYHem7DcGEWU3lurmwEehXOKvi3XpIB6g"
+		}
+	]
+}

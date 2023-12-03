@@ -22,7 +22,7 @@ class UserService {
 
     async singin(data) {
         const user = await this.getByEmail(data.email);
-
+        
         if (!user) {
             throw Error("User not found");
         }

@@ -41,7 +41,7 @@ export const singin = async (req, res) => {
             success: false,
             message: 'Something Went Wrong',
             token: null,
-            errors: error,
+            errors: error.message,
         })
     }
 };
